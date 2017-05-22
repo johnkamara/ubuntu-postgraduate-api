@@ -1,0 +1,101 @@
+# springfox.documentation.swagger.v2.path=/datos/api/doc
+server:
+  contextPath: /intranet-restful
+  # Configure the server to run with SSL/TLS and using HTTPS
+  port: 8443
+  ssl:
+    key-store: classpath:ssl/tomcat.keystore
+    key-store-password: preving
+    key-password: preving
+
+jwt:
+  header: Authorization
+  prefijo: Bearer
+  secret: clave para encriptar jwt!
+  expiration: 86400
+  route:
+    authentication:
+      path: /login
+      refresh: /refresh
+
+spring:
+
+  profiles:
+    active: dev
+
+  # http://www.mkyong.com/java/how-to-enable-pretty-print-json-output-jackson/
+  # opara que las respuestas json vayan indentadas
+  jackson:
+    serialization:
+      INDENT_OUTPUT: true
+
+  jmx:
+    enabled: false  # necesario para no obtener el siguiente error:
+
+  # Unable to register MBean [org.apache.tomcat.dbcp.dbcp2.BasicDataSource
+  # Show or not log for each sql query
+  #jpa:
+    #show-sql: true
+
+  # Hibernate ddl auto (create, create-drop, update): with "update" the database
+  # schema will be automatically updated accordingly to java entities found in
+  # the project
+  #hibernate:
+    #ddl-auto: create
+
+---
+
+spring:
+  profiles: dev
+datasource:
+   db-gc:
+     url: jdbc:oracle:thin:@155.155.15.228:1521/pre
+     username: gc2006_release
+     password: walterdrvp505
+     driver-class-name: oracle.jdbc.driver.OracleDriver
+
+   db-secure:
+     url: jdbc:oracle:thin:@155.155.15.228:1521/pre
+     username: optec
+     password: oPt_0818.1259
+     driver-class-name: oracle.jdbc.driver.OracleDriver
+
+mail:
+   host: mail.preving.com
+   port: 25
+   userName: intranet@preving.com
+   password: Int..26980
+---
+
+spring:
+  profiles: preprod
+datasource:
+  db-gc:
+    jndi-name: java:comp/env/jdbc/gcPrepro
+
+  db-secure:
+    jndi-name: java:comp/env/jdbc/securePrepro
+
+
+mail:
+   host: 82.223.77.42
+   port: 25
+   userName: intranet@preving.com
+   password: Int..26980
+---
+
+spring:
+  profiles: prod
+  #todo configurar los jndi correctos para produccion
+datasource:
+   db-gc:
+     jndi-name: java:comp/env/jdbc/gc
+
+   db-secure:
+     jndi-name: java:comp/env/jdbc/secure
+
+mail:
+   host: mail.preving.com
+   port: 25
+   userName: intranet@preving.com
+   password: Int..26980
