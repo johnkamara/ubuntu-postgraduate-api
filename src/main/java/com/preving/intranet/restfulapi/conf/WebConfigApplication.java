@@ -10,7 +10,6 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
  */
 @Configuration
 @EnableWebMvc
-//@Profile("preprod")
 public class WebConfigApplication extends WebMvcConfigurerAdapter {
 
     @Override
