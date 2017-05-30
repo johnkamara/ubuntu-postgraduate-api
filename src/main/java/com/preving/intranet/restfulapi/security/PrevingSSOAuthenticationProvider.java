@@ -2,6 +2,7 @@ package com.preving.intranet.restfulapi.security;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -16,6 +17,12 @@ public class PrevingSSOAuthenticationProvider implements AuthenticationProvider 
 
     private static Logger logger = LoggerFactory.getLogger(PrevingSSOAuthenticationProvider.class);
 
+    @Value(value="${seguridad.user}")
+    private String seguridadUser;
+
+    @Value(value="${seguridad.pwd}")
+    private String seguridadPwd;
+
     @Override
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
         String username = authentication.getName();
@@ -23,7 +30,7 @@ public class PrevingSSOAuthenticationProvider implements AuthenticationProvider 
 
         // use the credentials
         // and authenticate against the third-party system
-        boolean authenticated = ("roge".equals(username) && "pwd".equals(password));
+        boolean authenticated = (seguridadUser.equals(username) && seguridadPwd.equals(password));
 
         if (authenticated) {
             return new UsernamePasswordAuthenticationToken(username, password);
