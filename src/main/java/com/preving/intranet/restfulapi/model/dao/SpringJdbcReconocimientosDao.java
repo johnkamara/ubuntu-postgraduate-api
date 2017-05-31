@@ -18,9 +18,9 @@ public class SpringJdbcReconocimientosDao implements ReconocimientosDao {
         if (trabajadorId%2 == 0) {
             puestosDeTrabajos.add(new PuestoTrabajo(1, "Programador", true));
             puestosDeTrabajos.add(new PuestoTrabajo(2, "Analista", false));
-            puestosDeTrabajos.add(new PuestoTrabajo(3, "Jefe de Área", true));
+            puestosDeTrabajos.add(new PuestoTrabajo(3, "Jefe de ï¿½rea", true));
         } else {
-            puestosDeTrabajos.add(new PuestoTrabajo(4, "Médico", true));
+            puestosDeTrabajos.add(new PuestoTrabajo(4, "Mï¿½dico", true));
             puestosDeTrabajos.add(new PuestoTrabajo(5, "DUE", false));
             puestosDeTrabajos.add(new PuestoTrabajo(6, "Planificador", true));
         }
@@ -31,12 +31,12 @@ public class SpringJdbcReconocimientosDao implements ReconocimientosDao {
     public List<Protocolo> getProtocolosAsociadosAPuestoDeTrabajo(int puestoId) {
         List<Protocolo> protocolos = new ArrayList<Protocolo>();
         if (puestoId%2 == 0) {
-            protocolos.add(new Protocolo(1, "Reconocimiento Básico"));
+            protocolos.add(new Protocolo(1, "Reconocimiento Basico"));
             protocolos.add(new Protocolo(2, "Trabajo en altura"));
             protocolos.add(new Protocolo(3, "Plomo"));
         } else {
-            protocolos.add(new Protocolo(4, "Trabajo en alta tensión"));
-            protocolos.add(new Protocolo(5, "Trabajo en baja tensión"));
+            protocolos.add(new Protocolo(4, "Trabajo en alta tension"));
+            protocolos.add(new Protocolo(5, "Trabajo en baja tension"));
             protocolos.add(new Protocolo(6, "Profesor"));
         }
 

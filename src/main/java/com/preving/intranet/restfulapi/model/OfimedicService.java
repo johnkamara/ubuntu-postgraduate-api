@@ -1,0 +1,26 @@
+package com.preving.intranet.restfulapi.model;
+
+import com.preving.intranet.restfulapi.model.domain.OfimedicCita;
+
+import java.util.Date;
+import java.util.List;
+
+/**
+ * Created by javier-montesinos on 31/05/17.
+ */
+public interface OfimedicService {
+
+    /**
+     * ALMACENA LAS CITAS OFRECIDAS SIEMPRE QUE NO EXISTAN PARA EL ORIGEN INDICADO
+     * @param citas
+     */
+    void save(List<OfimedicCita> citas);
+
+
+    /**
+     * Recupera las citas procesadas por ofimedic desde una fecha
+     * @param desde
+     * @return
+     */
+    List<OfimedicCita> getCitasProcesadas(Date desde);
+}
