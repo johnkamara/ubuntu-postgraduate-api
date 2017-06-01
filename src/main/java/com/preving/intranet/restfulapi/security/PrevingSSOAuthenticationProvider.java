@@ -3,6 +3,7 @@ package com.preving.intranet.restfulapi.security;
 import com.preving.intranet.restfulapi.model.domain.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -26,7 +27,7 @@ public class PrevingSSOAuthenticationProvider implements AuthenticationProvider 
     @Value(value="${seguridad.pwd}")
     private String seguridadPwd;
 
-    // todo fj2m autowire usuarios usuario, salto, hash.... no guardar la contraseña como texto plano si se puede
+    @Autowired
     private List<User> usuarios;
 
     @Override
@@ -34,8 +35,12 @@ public class PrevingSSOAuthenticationProvider implements AuthenticationProvider 
         String username = authentication.getName();
         String password = authentication.getCredentials().toString();
 
-        // todo fj2m autenticar contra los usuarios guardados en
-        boolean authenticated = (seguridadUser.equals(username) && seguridadPwd.equals(password));
+        User usuario = usuarios.stream()
+                    .filter(e -> e.getUsername().equals(username) && e.getPassword().equals(password))
+                    .findFirst()
+                    .orElse(null);
+
+        boolean authenticated = usuario != null;
 
         if (authenticated) {
             return new UsernamePasswordAuthenticationToken(username, password);
