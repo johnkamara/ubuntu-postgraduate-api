@@ -35,7 +35,7 @@ public class OfimedicManager implements OfimedicService {
     }
 
     @Override
-    public List<OfimedicCita> getCitasProcesadas(Date desde) {
-        return this.dao.getCitasProcesadasEntreFichas(desde);
+    public List<OfimedicCita> getCitasProcesadasDesdeFecha(Date desde) {
+        return this.dao.getCitasProcesadasDesdeFecha(desde);
     }
 }

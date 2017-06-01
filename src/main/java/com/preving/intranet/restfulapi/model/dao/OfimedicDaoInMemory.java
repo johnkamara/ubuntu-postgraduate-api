@@ -12,13 +12,14 @@ import java.util.List;
 @Repository
 public class OfimedicDaoInMemory implements OfimedicDao{
 
+
     @Override
     public void save(OfimedicCita cita) {
         System.out.println("Guardando cita" + cita.toString());
     }
 
     @Override
-    public List<OfimedicCita> getCitasProcesadasEntreFichas(Date desde) {
+    public List<OfimedicCita> getCitasProcesadasDesdeFecha(Date desde) {
         // todo fj2m devolver una lista de citas para procesar
         return null;
     }

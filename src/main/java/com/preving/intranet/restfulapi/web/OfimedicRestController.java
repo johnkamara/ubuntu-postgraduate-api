@@ -27,6 +27,6 @@ public class OfimedicRestController {
 
     @RequestMapping(value = "/citas", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public @ResponseBody List<OfimedicCita> getCitasProcesadas(@RequestParam("desde")Date desde){
-        return this.service.getCitasProcesadas(desde);
+        return this.service.getCitasProcesadasDesdeFecha(desde);
     }
 }

@@ -22,5 +22,5 @@ public interface OfimedicService {
      * @param desde
      * @return
      */
-    List<OfimedicCita> getCitasProcesadas(Date desde);
+    List<OfimedicCita> getCitasProcesadasDesdeFecha(Date desde);
 }
