@@ -18,10 +18,6 @@ jwt:
       path: /login
       refresh: /refresh
 
-seguridad:
-  user: roger
-  pwd: pwdRoge
-
 spring:
 
   profiles:

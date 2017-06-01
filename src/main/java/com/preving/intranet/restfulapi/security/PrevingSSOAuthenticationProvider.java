@@ -4,7 +4,6 @@ import com.preving.intranet.restfulapi.model.domain.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -20,12 +19,6 @@ import java.util.List;
 public class PrevingSSOAuthenticationProvider implements AuthenticationProvider {
 
     private static Logger logger = LoggerFactory.getLogger(PrevingSSOAuthenticationProvider.class);
-
-    @Value(value="${seguridad.user}")
-    private String seguridadUser;
-
-    @Value(value="${seguridad.pwd}")
-    private String seguridadPwd;
 
     @Autowired
     private List<User> usuarios;
