@@ -3,6 +3,7 @@ package com.preving.intranet.restfulapi.model;
 import com.preving.intranet.restfulapi.model.dao.OfimedicDao;
 import com.preving.intranet.restfulapi.model.domain.OfimedicCita;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.Date;
 import java.util.List;
@@ -10,6 +11,7 @@ import java.util.List;
 /**
  * Created by javier-montesinos on 31/05/17.
  */
+@Service
 public class OfimedicManager implements OfimedicService {
 
     @Autowired
