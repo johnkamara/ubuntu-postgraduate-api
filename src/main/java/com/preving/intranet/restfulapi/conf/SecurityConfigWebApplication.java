@@ -1,7 +1,5 @@
 package com.preving.intranet.restfulapi.conf;
 
-import com.google.common.collect.Lists;
-import com.preving.intranet.restfulapi.model.domain.User;
 import com.preving.intranet.restfulapi.security.JwtAuthenticationEntryPoint;
 import com.preving.intranet.restfulapi.security.JwtAuthenticationTokenFilter;
 import com.preving.intranet.restfulapi.security.PrevingSSOAuthenticationProvider;
@@ -17,8 +15,6 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
-import java.util.List;
-
 /**
  * Created by javier-montesinos on 23/03/17.
  */
@@ -26,10 +22,6 @@ import java.util.List;
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityConfigWebApplication extends WebSecurityConfigurerAdapter {
-
-    private List<User> usuarios;
-
-
 
     @Autowired
     private JwtAuthenticationEntryPoint unauthorizedHandler;
@@ -74,14 +66,4 @@ public class SecurityConfigWebApplication extends WebSecurityConfigurerAdapter {
         // disable page caching
         httpSecurity.headers().cacheControl();
     }
-
-    @Bean
-      public List<User> usuarios() {
-        User userPrevenna = new User(new Long(1), "usuarioPrevenna", "Prevenna", "",
-                "prevenna@prevenna.es", "pwdPrevenna", true, null);
-        User userPreving = new User(new Long(1), "usuarioPreving", "Preving", "",
-                        "preving@preving.es", "pwdPreving", true, null);
-
-        return Lists.newArrayList(userPrevenna, userPreving);
-      }
 }

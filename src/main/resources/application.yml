@@ -18,6 +18,28 @@ jwt:
       path: /login
       refresh: /refresh
 
+users:
+  usuariosList:
+    -
+      id: 1
+      username: usuarioPrevenna
+      salto: paco
+      password: pwdPrevenna
+      firstname: Prevenna
+      lastname: S.L.
+      email: prevenna@prevenna.es
+      enabled: true
+
+    -
+      id: 2
+      username: usuarioPreving
+      salto: paco
+      password: pwdPreving
+      firstname: Preving
+      lastname: S.L.
+      email: preving@preving.com
+      enabled: true
+
 spring:
 
   profiles:
