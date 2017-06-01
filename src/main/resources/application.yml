@@ -23,7 +23,6 @@ users:
     -
       id: 1
       username: usuarioPrevenna
-      salto: paco
       password: pwdPrevenna
       firstname: Prevenna
       lastname: S.L.
@@ -33,7 +32,6 @@ users:
     -
       id: 2
       username: usuarioPreving
-      salto: paco
       password: pwdPreving
       firstname: Preving
       lastname: S.L.
