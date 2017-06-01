@@ -51,18 +51,18 @@ spring:
 
 spring:
   profiles: dev
-datasource:
-   db-gc:
-     url: jdbc:oracle:thin:@155.155.15.228:1521/pre
-     username: gc2006_release
-     password: walterdrvp505
-     driver-class-name: oracle.jdbc.driver.OracleDriver
+#datasource:
+#   db-gc:
+#     url: jdbc:oracle:thin:@155.155.15.228:1521/pre
+#     username: gc2006_release
+#     password: walterdrvp505
+#     driver-class-name: oracle.jdbc.driver.OracleDriver
 
-   db-secure:
-     url: jdbc:oracle:thin:@155.155.15.228:1521/pre
-     username: optec
-     password: oPt_0818.1259
-     driver-class-name: oracle.jdbc.driver.OracleDriver
+#   db-secure:
+#     url: jdbc:oracle:thin:@155.155.15.228:1521/pre
+#     username: optec
+#     password: oPt_0818.1259
+#     driver-class-name: oracle.jdbc.driver.OracleDriver
 
 mail:
    host: mail.preving.com
@@ -73,12 +73,12 @@ mail:
 
 spring:
   profiles: preprod
-datasource:
-  db-gc:
-    jndi-name: java:comp/env/jdbc/gcPrepro
+#datasource:
+#  db-gc:
+#    jndi-name: java:comp/env/jdbc/gcPrepro
 
-  db-secure:
-    jndi-name: java:comp/env/jdbc/securePrepro
+#  db-secure:
+#    jndi-name: java:comp/env/jdbc/securePrepro
 
 
 mail:
@@ -91,12 +91,12 @@ mail:
 spring:
   profiles: prod
   #todo configurar los jndi correctos para produccion
-datasource:
-   db-gc:
-     jndi-name: java:comp/env/jdbc/gc
+#datasource:
+#   db-gc:
+#     jndi-name: java:comp/env/jdbc/gc
 
-   db-secure:
-     jndi-name: java:comp/env/jdbc/secure
+#   db-secure:
+#     jndi-name: java:comp/env/jdbc/secure
 
 mail:
    host: mail.preving.com
