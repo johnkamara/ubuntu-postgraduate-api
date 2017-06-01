@@ -62,16 +62,24 @@ public class JwtTokenUtil implements Serializable {
         return username;
     }
 
-    public List<String> getRolesFromToken(HttpServletRequest request) {
+    public UsuarioMin getUserFromToken(HttpServletRequest request) {
         String token = this.getTokenFromHeader(request);
+
+        UsuarioMin u;
         try {
             final Claims claims = getClaimsFromToken(token);
-            List<String> roles = (List<String>)claims.get(CLAIM_KEY_AUTHORITIES);
-            return roles;
+
+            u = new UsuarioMin();
+            u.setId(((Integer)claims.get(CLAIM_KEY_USER_ID)).intValue());
+            u.setEmail((String)claims.get(CLAIM_KEY_USER_EMAIL));
+            u.setNombre((String)claims.get(CLAIM_KEY_USER_FNAME));
+            u.setApellidos((String)claims.get(CLAIM_KEY_USER_LNAME));
+            u.setUsuario(claims.getSubject());
+
         } catch (Exception e) {
-            e.printStackTrace();
-            return null;
+            u = null;
         }
+        return u;
     }
 
     public Date getCreatedDateFromToken(String token) {
@@ -150,14 +158,17 @@ public class JwtTokenUtil implements Serializable {
         return (AUDIENCE_TABLET.equals(audience) || AUDIENCE_MOBILE.equals(audience));
     }
 
-    public String generateToken(UserDetails userDetails, UsuarioMin usuarioMin, Device device) {
+    public String generateToken(UserDetails userDetails, Device device) {
         Map<String, Object> claims = new HashMap<>();
 
-        claims.put(CLAIM_KEY_USER_ID, usuarioMin.getId());
-        claims.put(CLAIM_KEY_USERNAME, userDetails.getUsername());
-        claims.put(CLAIM_KEY_USER_FNAME, usuarioMin.getNombre());
-        claims.put(CLAIM_KEY_USER_LNAME, usuarioMin.getApellidos());
-        claims.put(CLAIM_KEY_USER_EMAIL, usuarioMin.getEmail());
+        if(userDetails instanceof JwtUser){
+            JwtUser jwtUser = (JwtUser)userDetails;
+            claims.put(CLAIM_KEY_USER_ID, jwtUser.getId());
+            claims.put(CLAIM_KEY_USER_FNAME, jwtUser.getFirstname());
+            claims.put(CLAIM_KEY_USER_LNAME, jwtUser.getLastname());
+            claims.put(CLAIM_KEY_USERNAME, jwtUser.getUsername());
+            claims.put(CLAIM_KEY_USER_EMAIL, jwtUser.getEmail());
+        }
 
         claims.put(CLAIM_KEY_AUDIENCE, generateAudience(device));
         claims.put(CLAIM_KEY_AUTHORITIES, userDetails.getAuthorities());
