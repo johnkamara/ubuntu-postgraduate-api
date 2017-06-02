@@ -19,11 +19,11 @@ public class ReconocimientosController {
     @Autowired
     private ReconocimientosService reconocimientosService;
 
-    @RequestMapping(value = "puestos-trabajo/{trabajadorId}/{centroId}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "puestos-trabajo/{trabajadorNif}/{centroId}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public @ResponseBody List<PuestoTrabajo> getPuestosDeTrabajoByTrabajadorAndCentro(
-            @PathVariable("trabajadorId") int trabajadorId,
+            @PathVariable("trabajadorNif") String trabajadorNif,
             @PathVariable("centroId") int centroId){
-        return this.reconocimientosService.getPuestosTrabajoByTrabajadorAndCentro(trabajadorId, centroId);
+        return this.reconocimientosService.getPuestosTrabajoByTrabajadorAndCentro(trabajadorNif, centroId);
     }
 
     @RequestMapping(value = "protocolos/{puestoId}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)

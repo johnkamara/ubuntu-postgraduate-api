@@ -10,7 +10,7 @@ import java.util.List;
  */
 public interface ReconocimientosDao {
 
-    List<PuestoTrabajo> getPuestosTrabajoByTrabajadorAndCentro(int trabajadorId, int centroId);
+    List<PuestoTrabajo> getPuestosTrabajoByTrabajadorAndCentro(String trabajadorNif, int centroId);
 
     List<Protocolo> getProtocolosAsociadosAPuestoDeTrabajo(int puestoId);
 }

@@ -17,8 +17,8 @@ public class ReconocimientosManager implements ReconocimientosService {
     @Autowired
     private ReconocimientosDao reconocimientosDao;
 
-    public List<PuestoTrabajo> getPuestosTrabajoByTrabajadorAndCentro(int trabajadorId, int centroId) {
-        return this.reconocimientosDao.getPuestosTrabajoByTrabajadorAndCentro(trabajadorId, centroId);
+    public List<PuestoTrabajo> getPuestosTrabajoByTrabajadorAndCentro(String trabajadorNif, int centroId) {
+        return this.reconocimientosDao.getPuestosTrabajoByTrabajadorAndCentro(trabajadorNif, centroId);
     }
 
     public List<Protocolo> getProtocolosAsociadosAPuestoDeTrabajo(int puestoId) {

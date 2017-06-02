@@ -53,23 +53,10 @@ public class AuthenticationRestController {
         // Reload password post-security so we can generate token
         final UserDetails userDetails = this.userDetailsService.loadUserByUsername(authenticationRequest.getUsername());
 
-        UsuarioMin usuarioMin = new UsuarioMin();
-        usuarioMin.setUsuario(userDetails.getUsername());
-
-        if("roge".equals(userDetails.getUsername())){
-            usuarioMin.setId(101301);
-            usuarioMin.setNombre("Roge");
-            usuarioMin.setApellidos("Gragera");
-            usuarioMin.setEmail("r.gragera@preving.com");
-
-        }
-
-        final String token = this.jwtTokenUtil.generateToken(userDetails, usuarioMin, device);
+        final String token = this.jwtTokenUtil.generateToken(userDetails, device);
 
         // Return the token
         return ResponseEntity.ok(new JwtAuthenticationResponse(token));
-
-
     }
 
     @RequestMapping(value = "${jwt.route.authentication.refresh}", method = RequestMethod.GET)
