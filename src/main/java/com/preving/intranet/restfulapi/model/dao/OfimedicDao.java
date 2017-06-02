@@ -12,6 +12,5 @@ public interface OfimedicDao {
 
     void save(OfimedicCita cita);
 
-
     List<OfimedicCita> getCitasProcesadasDesdeFecha(Date desde);
 }

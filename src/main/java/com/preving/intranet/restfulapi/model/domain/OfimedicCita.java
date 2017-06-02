@@ -9,7 +9,7 @@ import java.util.Date;
 public class OfimedicCita implements Serializable {
 
     public static final int ORIGEN_PREVING = 1;
-    public static final int ORIGEN_ASEM = 1;
+    public static final int ORIGEN_ASEM = 2;
 
     public static final int ESTADO_PENDIENTE = 0;
     public static final int ESTADO_PROCESADO_OK = 1;
