@@ -23,8 +23,6 @@ public class OfimedicDaoInMemory implements OfimedicDao {
 
     @Override
     public List<OfimedicCita> getCitasProcesadasDesdeFecha(Date desde) {
-        // todo fj2m devolver una lista de citas para procesar
-
         List<OfimedicCita> citasReturn = new ArrayList<>();
 
         // Recorre todas las citas y filtra según la fecha desde

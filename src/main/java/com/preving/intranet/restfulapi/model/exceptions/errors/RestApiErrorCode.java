@@ -13,8 +13,17 @@ public enum RestApiErrorCode {
     /**
      * {@code 1001 "Datos del usuario incorrectos. Validacion no aceptada}.
      */
-    ERROR_ACCESO_DATOS(1001, "Revise los datos del usuario. Validacion de datos incorrecta")
+    ERROR_ACCESO_DATOS(1001, "Revise los datos del usuario. Validacion de datos incorrecta"),
 
+    ERROR_VALIDACION_CITAS(2000, "No se ha podido guardar la/s cita/s por errores de validación"),
+    ERROR_VALIDACION_CITAS_ORIGEN(2001, "Origen de la cita no válido"),
+    ERROR_VALIDACION_CITAS_ORIGENCITAID(2002, "Campo 'origenCitaId' obligatorio"),
+    ERROR_VALIDACION_CITAS_FECHA(2003, "Campo 'fecha' obligatorio"),
+    ERROR_VALIDACION_CITAS_MEDICO(2004, "Campo 'medico' obligatorio"),
+    ERROR_VALIDACION_CITAS_CLIENTE(2005, "Campo 'cliente' obligatorio"),
+    ERROR_VALIDACION_CITAS_ESTADO(2006, "La cita debe estar pendiente de procesar"),
+
+    ERROR_CITAS(3000, "Ha ocurrido un error a la hora de guardar la/s cita/s"),
 
     ;
 
