@@ -1,5 +1,7 @@
 package com.preving.intranet.restfulapi.model.domain;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.io.Serializable;
 import java.util.Date;
 
@@ -18,22 +20,29 @@ public class OfimedicCita implements Serializable {
     private int id;
     private int origen;
     private int origenCitaId;
+
+    @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-MM-yyyy HH:mm:ss")
     private Date fecha;
+
     private String nombre;
     private String apellidos;
     private String nif;
     private String cliente;
     private String medico;
+
+    @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-MM-yyyy HH:mm:ss")
     private Date creado;
 
     private int procesadaEstado;
     private String procesadaError;
+
+    @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-MM-yyyy HH:mm:ss")
     private Date procesadaFecha;
+
     private int procesadaCitaId;
 
     public OfimedicCita() {
     }
-
 
     public OfimedicCita(int origen, int origenCitaId, Date fecha, String cliente, String medico) {
         this.origen = origen;
@@ -153,5 +162,25 @@ public class OfimedicCita implements Serializable {
 
     public void setProcesadaCitaId(int procesadaCitaId) {
         this.procesadaCitaId = procesadaCitaId;
+    }
+
+    @Override
+    public String toString() {
+        return "OfimedicCita{" +
+                "id=" + id +
+                ", origen=" + origen +
+                ", origenCitaId=" + origenCitaId +
+                ", fecha=" + fecha +
+                ", nombre='" + nombre + '\'' +
+                ", apellidos='" + apellidos + '\'' +
+                ", nif='" + nif + '\'' +
+                ", cliente='" + cliente + '\'' +
+                ", medico='" + medico + '\'' +
+                ", creado=" + creado +
+                ", procesadaEstado=" + procesadaEstado +
+                ", procesadaError='" + procesadaError + '\'' +
+                ", procesadaFecha=" + procesadaFecha +
+                ", procesadaCitaId=" + procesadaCitaId +
+                '}';
     }
 }

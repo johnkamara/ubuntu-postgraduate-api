@@ -38,12 +38,9 @@ public class OfimedicManager implements OfimedicService {
             if(citaCorrecta) {
                 try {
                     this.dao.save(cita);
-                    cita.setProcesadaEstado(OfimedicCita.ESTADO_PROCESADO_OK);
-                    cita.setProcesadaFecha(new Date());
                 } catch(Exception e) {
-                    cita.setProcesadaEstado(OfimedicCita.ESTADO_PROCESADO_ERROR);
                     e.printStackTrace();
-                    errores.add(new RestApiErrorDetail("error (id = " + cita.getId() + ")", e.getMessage()));
+                    errores.add(new RestApiErrorDetail("error (id = " + cita.getOrigenCitaId() + ")", e.getMessage()));
                 }
             } else {
                 erroresValidacionReturn.addAll(erroresValidacion);
@@ -52,7 +49,7 @@ public class OfimedicManager implements OfimedicService {
 
         // Devuelve una lista con los errores de validación
         if(erroresValidacionReturn.size() > 0) {
-            throw new CustomRestApiException(HttpStatus.PRECONDITION_FAILED, RestApiErrorCode.ERROR_VALIDACION_CITAS,
+            throw new CustomRestApiException(HttpStatus.UNPROCESSABLE_ENTITY, RestApiErrorCode.ERROR_VALIDACION_CITAS,
                     erroresValidacionReturn);
         }
 
@@ -69,46 +66,51 @@ public class OfimedicManager implements OfimedicService {
         // origen: 1 - PREVING, 2 - ASEM
         if(cita.getOrigen() != 1 && cita.getOrigen() != 2) {
             validado = false;
-            errores.add(new RestApiErrorDetail("error.validacion.origen (id = " + cita.getId() + ")",
+            errores.add(new RestApiErrorDetail("error.validacion.origen (id = " + cita.getOrigenCitaId() + ")",
                     RestApiErrorCode.ERROR_VALIDACION_CITAS_ORIGEN.getMessage()));
         }
 
         // origenCitaId obligatorio
         if(cita.getOrigenCitaId() <= 0) {
             validado = false;
-            errores.add(new RestApiErrorDetail("error.validacion.origenCitaId (id = " + cita.getId() + ")",
+            errores.add(new RestApiErrorDetail("error.validacion.origenCitaId (id = " + cita.getOrigenCitaId() + ")",
                     RestApiErrorCode.ERROR_VALIDACION_CITAS_ORIGENCITAID.getMessage()));
         }
 
         // fecha obligatorio
         if(cita.getFecha() == null) {
             validado = false;
-            errores.add(new RestApiErrorDetail("error.validacion.fecha id = (" + cita.getId() + ")",
+            errores.add(new RestApiErrorDetail("error.validacion.fecha (id = " + cita.getOrigenCitaId() + ")",
                     RestApiErrorCode.ERROR_VALIDACION_CITAS_FECHA.getMessage()));
         }
 
         // medico obligatorio
         if(cita.getMedico() == null || cita.getMedico().equals("")) {
             validado = false;
-            errores.add(new RestApiErrorDetail("error.validacion.medico id = (" + cita.getId() + ")",
+            errores.add(new RestApiErrorDetail("error.validacion.medico (id = " + cita.getOrigenCitaId() + ")",
                     RestApiErrorCode.ERROR_VALIDACION_CITAS_MEDICO.getMessage()));
         }
 
         // cliente obligatorio
         if(cita.getCliente() == null || cita.getCliente().equals("")) {
             validado = false;
-            errores.add(new RestApiErrorDetail("error.validacion.cliente id = (" + cita.getId() + ")",
+            errores.add(new RestApiErrorDetail("error.validacion.cliente (id = " + cita.getOrigenCitaId() + ")",
                     RestApiErrorCode.ERROR_VALIDACION_CITAS_CLIENTE.getMessage()));
         }
 
         // estado pendiente
         if(cita.getProcesadaEstado() != 0) {
             validado = false;
-            errores.add(new RestApiErrorDetail("error.validacion.estado id = (" + cita.getId() + ")",
+            errores.add(new RestApiErrorDetail("error.validacion.estado (id = " + cita.getOrigenCitaId() + ")",
                     RestApiErrorCode.ERROR_VALIDACION_CITAS_ESTADO.getMessage()));
         }
 
         return validado;
+    }
+
+    @Override
+    public void procesarCitas() {
+        this.dao.procesarCitas();
     }
 
     @Override

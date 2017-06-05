@@ -16,6 +16,10 @@ public interface OfimedicService {
      */
     void save(List<OfimedicCita> citas);
 
+    /**
+     * Simulamos que Ofimedic procesa las citas que están actualmente enviadas
+     */
+    void procesarCitas();
 
     /**
      * Recupera las citas procesadas por ofimedic desde una fecha
