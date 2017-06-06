@@ -21,7 +21,7 @@ public class OfimedicCita implements Serializable {
     private int origen;
     private int origenCitaId;
 
-    @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-MM-yyyy HH:mm:ss")
+    @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-MM-yyyy HH:mm")
     private Date fecha;
 
     private String nombre;
@@ -30,13 +30,13 @@ public class OfimedicCita implements Serializable {
     private String cliente;
     private String medico;
 
-    @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-MM-yyyy HH:mm:ss")
+    @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-MM-yyyy HH:mm")
     private Date creado;
 
     private int procesadaEstado;
     private String procesadaError;
 
-    @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-MM-yyyy HH:mm:ss")
+    @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-MM-yyyy HH:mm")
     private Date procesadaFecha;
 
     private int procesadaCitaId;
