@@ -1,12 +1,12 @@
 # springfox.documentation.swagger.v2.path=/datos/api/doc
 server:
-  contextPath: /intranet-restful
+  contextPath: /ubuntu-postgraduate-api
   # Configure the server to run with SSL/TLS and using HTTPS
   port: 8443
-  ssl:
-    key-store: classpath:ssl/tomcat.keystore
-    key-store-password: preving
-    key-password: preving
+#  ssl:
+#    key-store: classpath:ssl/tomcat.keystore
+#    key-store-password: preving
+#    key-password: preving
 
 jwt:
   header: Authorization
@@ -22,20 +22,11 @@ users:
   usuariosList:
     -
       id: 1
-      username: usuarioPrevenna
-      password: pwdPrevenna
-      firstname: Prevenna
+      username: ubuntu
+      password: ubuntu_team
+      firstname: Ubuntu
       lastname: S.L.
-      email: prevenna@prevenna.es
-      enabled: true
-
-    -
-      id: 2
-      username: usuarioPreving
-      password: pwdPreving
-      firstname: Preving
-      lastname: S.L.
-      email: preving@preving.com
+      email: ubuntuafrika@preving.com
       enabled: true
 
 spring:
@@ -89,13 +80,6 @@ mail:
 
 spring:
   profiles: preprod
-#datasource:
-#  db-gc:
-#    jndi-name: java:comp/env/jdbc/gcPrepro
-
-#  db-secure:
-#    jndi-name: java:comp/env/jdbc/securePrepro
-
 
 mail:
    host: 82.223.77.42
@@ -106,13 +90,6 @@ mail:
 
 spring:
   profiles: prod
-  #todo configurar los jndi correctos para produccion
-#datasource:
-#   db-gc:
-#     jndi-name: java:comp/env/jdbc/gc
-
-#   db-secure:
-#     jndi-name: java:comp/env/jdbc/secure
 
 mail:
    host: mail.preving.com
