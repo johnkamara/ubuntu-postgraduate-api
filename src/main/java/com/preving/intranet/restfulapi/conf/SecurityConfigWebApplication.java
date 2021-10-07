@@ -54,10 +54,9 @@ public class SecurityConfigWebApplication extends WebSecurityConfigurerAdapter {
                 // necesario para aceptar CORS OPTIONS
                 .antMatchers(HttpMethod.OPTIONS, "/**").permitAll()
 
-            .antMatchers("/auth/**/*")
-                .permitAll()
-            .anyRequest()
-                .authenticated();
+            .antMatchers("/auth/**/*").permitAll()
+
+            .antMatchers("/students/**/*").authenticated();
 
         // Custom JWT based security filter
         httpSecurity

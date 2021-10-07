@@ -58,18 +58,19 @@ spring:
 
 spring:
   profiles: dev
-#datasource:
-#   db-gc:
-#     url: jdbc:oracle:thin:@155.155.15.228:1521/pre
-#     username: gc2006_release
-#     password: walterdrvp505
-#     driver-class-name: oracle.jdbc.driver.OracleDriver
 
-#   db-secure:
-#     url: jdbc:oracle:thin:@155.155.15.228:1521/pre
-#     username: optec
-#     password: oPt_0818.1259
-#     driver-class-name: oracle.jdbc.driver.OracleDriver
+datasource:
+   db-sajp:
+     url: jdbc:oracle:thin:@155.155.15.228:1521/pre
+     username: sajp
+     password: 6DPtc36z1111_
+     driver-class-name: oracle.jdbc.driver.OracleDriver
+
+   db-secure:
+     url: jdbc:oracle:thin:@155.155.15.228:1521/pre
+     username: optec
+     password: 6DPtc36z1111_
+     driver-class-name: oracle.jdbc.driver.OracleDriver
 
 mail:
    host: mail.preving.com

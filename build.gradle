@@ -40,30 +40,33 @@ repositories {
 
 
 dependencies {
-	// https://mvnrepository.com/artifact/io.springfox/springfox-swagger2
-	compile group: 'io.springfox', name: 'springfox-swagger2', version: '2.6.1'
 
-	// https://mvnrepository.com/artifact/io.springfox/springfox-swagger-ui
+	// Spring Data Rest
+	compile('org.springframework.boot:spring-boot-starter-data-jpa')
+	compile('org.springframework.boot:spring-boot-starter-data-rest')
+	
+	// Oracle driver
+	runtime group: 'com.oracle', name: 'ojdbc6', version: '11.2.0'
+	
+	// Swagger
+	compile group: 'io.springfox', name: 'springfox-swagger2', version: '2.6.1'
 	compile group: 'io.springfox', name: 'springfox-swagger-ui', version: '2.6.1'
 
-
-	// seguridad
-	// https://mvnrepository.com/artifact/io.jsonwebtoken/jjwt
+	// Security
 	compile group: 'io.jsonwebtoken', name: 'jjwt', version: '0.7.0'
 	compile('org.springframework.boot:spring-boot-starter-security')
 	compile('org.springframework.mobile:spring-mobile-device')
 
+	// Spring boot
 	compile('org.springframework.boot:spring-boot-starter-web')
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 
-	//dependencia mail y velocity
+	// Mail
 	compile 'org.apache.velocity:velocity:1.7'
 	compile group: 'org.springframework.boot', name: 'spring-boot-starter-mail', version: '1.5.2.RELEASE'
 
-	// Encriptacion
+	// Encript
 	compile group: 'org.bouncycastle', name: 'bcprov-jdk16', version: '1.45'
 	compile group: 'commons-codec', name: 'commons-codec', version: '1.10'
-
-
-
+	
 }
