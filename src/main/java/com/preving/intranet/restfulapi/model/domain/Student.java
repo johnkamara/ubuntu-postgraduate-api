@@ -1,93 +1,110 @@
 package com.preving.intranet.restfulapi.model.domain;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
+import java.util.Date;
 
 @Entity
-@Table(schema = "sajp", name = "students")
+@Table(schema = "SAJP", name = "STUDENTS")
 public class Student implements Serializable {
+
+    private int id;
+    //columns with constraints
+    @NotNull
+    @Column(name = "name", nullable = false)
+    private String name;
+    @NotNull
+    @Column(name = "birthday", nullable = false)
+    private Date birthday;
+    @NotNull
+    @Column(name = "locality", nullable = false)
+    private String locality;
+    @NotNull
+
+    @Column(name = "university", nullable = false)
+    private String university;
+    @NotNull
+    @Column(name = "postgraduate_year", nullable = false)
+    private int postgraduate_year;
+    @NotNull
+    @Column(name = "active", nullable = false)
+    private int active;
+
+    //super constructor
+    public Student() {
+    }
+
+    public Student(String name, Date birthday, String locality, String university, int postgraduate_year, int active) {
+        this.name = name;
+        this.birthday = birthday;
+        this.locality = locality;
+        this.university = university;
+        this.postgraduate_year = postgraduate_year;
+        this.active = active;
+    }
+
     @Id
     @Column(name = "ID", nullable = false)
     @SequenceGenerator(name = "STUDENTS_SEQ", sequenceName = "STUDENTS_SEQ", schema = "SAJP", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "STUDENTS_SEQ")
-    private int ID;
-    @Column(length = 45)
-    private String NAME;
-    @Column(length = 25)
-    private String BIRTHDAY;
-    @Column(length = 25)
-    private String LOCALITY;
-    @Column(length = 25, nullable = false, unique = true)
-    private String YEAR;
-    @Column(length = 25, nullable = false)
-    private String ACTIVE;
-
-    public Student(int ID, String NAME, String BIRTHDAY, String LOCALITY, String YEAR, String ACTIVE) {
-        this.ID = ID;
-        this.NAME = NAME;
-        this.BIRTHDAY = BIRTHDAY;
-        this.LOCALITY = LOCALITY;
-        this.YEAR = YEAR;
-        this.ACTIVE = ACTIVE;
+    public int getId() {
+        return id;
     }
 
-    public int getID() {
-        return ID;
+    //constructors
+
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public void setID(int ID) {
-        this.ID = ID;
+    //getters and setters
+
+    public String getName() {
+        return name;
     }
 
-    public String getNAME() {
-        return NAME;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public void setNAME(String NAME) {
-        this.NAME = NAME;
+    public Date getBirthday() {
+        return birthday;
     }
 
-    public String getBIRTHDAY() {
-        return BIRTHDAY;
+    public void setBirthday(Date birthday) {
+        this.birthday = birthday;
     }
 
-    public void setBIRTHDAY(String BIRTHDAY) {
-        this.BIRTHDAY = BIRTHDAY;
+    public String getLocality() {
+        return locality;
     }
 
-    public String getLOCALITY() {
-        return LOCALITY;
+    public void setLocality(String locality) {
+        this.locality = locality;
     }
 
-    public void setLOCALITY(String LOCALITY) {
-        this.LOCALITY = LOCALITY;
+    public String getUniversity() {
+        return university;
     }
 
-    public String getYEAR() {
-        return YEAR;
+    public void setUniversity(String university) {
+        this.university = university;
     }
 
-    public void setYEAR(String YEAR) {
-        this.YEAR = YEAR;
+    public int getPostgraduate_year() {
+        return postgraduate_year;
     }
 
-    public String getACTIVE() {
-        return ACTIVE;
+    public void setPostgraduate_year(int postgraduate_year) {
+        this.postgraduate_year = postgraduate_year;
     }
 
-    public void setACTIVE(String ACTIVE) {
-        this.ACTIVE = ACTIVE;
+    public int getActive() {
+        return active;
     }
 
-    @Override
-    public String toString() {
-        return "Student{" +
-                "ID=" + ID +
-                ", NAME='" + NAME + '\'' +
-                ", BIRTHDAY='" + BIRTHDAY + '\'' +
-                ", LOCALITY='" + LOCALITY + '\'' +
-                ", YEAR='" + YEAR + '\'' +
-                ", ACTIVE='" + ACTIVE + '\'' +
-                '}';
+    public void setActive(int active) {
+        this.active = active;
     }
 }
