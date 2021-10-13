@@ -60,17 +60,26 @@ spring:
   profiles: dev
 
 datasource:
-   db-sajp:
-     url: jdbc:oracle:thin:@155.155.15.228:1521/pre
-     username: sajp
-     password: 6DPtc36z1111_
-     driver-class-name: oracle.jdbc.driver.OracleDriver
+  url: jdbc:mysql://localhost:3306/sajp
+  username: root
+  password: kamara1734
+  driver-class-name: com.mysql.jdbc.Driver
+jpa:
+  hibernate:
+    ddl-auto: update
+  show-sql: true
 
-   db-secure:
-     url: jdbc:oracle:thin:@155.155.15.228:1521/pre
-     username: optec
-     password: 6DPtc36z1111_
-     driver-class-name: oracle.jdbc.driver.OracleDriver
+#   db-sajp:
+#     url: jdbc:oracle:thin:@155.155.15.228:1521/pre
+#     username: sajp
+#     password: 6DPtc36z1111_
+#     driver-class-name: oracle.jdbc.driver.OracleDriver
+
+#   db-secure:
+#     url: jdbc:oracle:thin:@155.155.15.228:1521/pre
+#     username: optec
+#     password: 6DPtc36z1111_
+#     driver-class-name: oracle.jdbc.driver.OracleDriver
 
 mail:
    host: mail.preving.com
